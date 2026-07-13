@@ -1,0 +1,8 @@
+{
+  "bindings": {
+    "3": { "type": "keystroke", "modifiers": ["cmd"], "key": "left", "label": "Back" },
+    "4": { "type": "keystroke", "modifiers": ["cmd"], "key": "right", "label": "Forward" },
+    "5": { "type": "keystroke", "modifiers": ["cmd"], "key": "space", "label": "Spotlight" },
+    "6": { "type": "shell", "command": "open -a 'Mission Control'", "label": "Mission Control" }
+  }
+}
