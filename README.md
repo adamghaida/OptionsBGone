@@ -1,13 +1,17 @@
 # OptionsBGone
 
-A tiny macOS menu-bar app that remaps the extra buttons on a Logitech mouse
-(built for the **MX Master 4** over Bluetooth) to keystrokes, app launches, or
-shell commands — **without running Logi Options**.
+A tiny macOS menu-bar app that remaps the extra buttons on **any mouse** to
+keystrokes, app launches, or shell commands — **without any vendor software**
+(Logi Options, Razer Synapse, etc.).
 
-It works by installing a system-wide `CGEventTap` on mouse-button events, so it
-doesn't talk to the device directly and doesn't care whether the mouse is on
-Bluetooth or the Bolt receiver. Bound buttons are *swallowed* so the OS default
-(Back/Forward/etc.) doesn't also fire.
+Because it installs a system-wide `CGEventTap` on mouse-button events instead of
+talking to a specific device, it's **completely vendor-agnostic** — Logitech,
+Razer, a generic $10 mouse, wired or Bluetooth, it doesn't care. Bound buttons
+are *swallowed* so the OS default (Back/Forward/etc.) doesn't also fire.
+
+> Born as a Logi Options replacement for the **MX Master 4** — but there's
+> nothing Logitech-specific about it. If your mouse has extra buttons macOS can
+> see, OptionsBGone can remap them.
 
 No Dock icon — it lives in the menu bar.
 
@@ -99,9 +103,13 @@ Ordinary app shortcuts like `⌘Space` work fine as keystrokes.
 
 ## Possible next steps
 
-- HID++ 2.0 control: divert the gesture button, set DPI, read battery, remap
-  on-device.
 - A stable local signing identity so the Accessibility grant survives rebuilds.
+- A signed + notarized release so anyone can download and run it without the
+  Gatekeeper warning.
+
+**Not** planned: vendor-specific HID++ device control (DPI, on-device remap,
+battery). It would only work on Logitech hardware and fights macOS over
+Bluetooth — the opposite of the goal here, which is to work with *any* mouse.
 
 ## License
 

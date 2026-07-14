@@ -53,7 +53,7 @@ struct SettingsView: View {
 
             VStack(alignment: .leading, spacing: 2) {
                 Text("OptionsBGone").font(.title2.bold())
-                Text("MX Master button remapper")
+                Text("Remap your mouse's extra buttons")
                     .font(.callout).foregroundStyle(.secondary)
             }
             Spacer()
