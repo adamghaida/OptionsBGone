@@ -83,7 +83,7 @@ struct SettingsView: View {
 
     private var bindingsSection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            sectionTitle("Your Bindings", systemImage: "list.bullet")
+            sectionTitle("Your bindings", systemImage: "list.bullet")
 
             if store.bindings.isEmpty {
                 emptyState
@@ -162,7 +162,7 @@ struct SettingsView: View {
 
     private var editorSection: some View {
         VStack(alignment: .leading, spacing: 14) {
-            sectionTitle(editingId == nil ? "Add Binding" : "Edit Binding",
+            sectionTitle(editingId == nil ? "Add binding" : "Edit binding",
                          systemImage: editingId == nil ? "plus.circle" : "pencil.circle")
 
             VStack(alignment: .leading, spacing: 14) {
@@ -225,14 +225,14 @@ struct SettingsView: View {
                     Button {
                         commit()
                     } label: {
-                        Label(editingId == nil ? "Add Binding" : "Save Changes",
+                        Label(editingId == nil ? "Add binding" : "Save changes",
                               systemImage: "checkmark")
                     }
                     .buttonStyle(.borderedProminent)
                     .keyboardShortcut(.defaultAction)
-                    .disabled(Int(buttonText) == nil)
                 }
             }
+            .padding(16)
             .card()
         }
     }
@@ -420,16 +420,26 @@ struct SettingsView: View {
 
 // MARK: - Card container
 
-private extension View {
-    func card() -> some View {
-        self
+/// A subtly elevated card that reads clearly in both light and dark mode
+/// (`.controlBackgroundColor` is nearly identical to the window background in
+/// dark mode, so cards vanished — this uses an adaptive fill + border instead).
+private struct CardStyle: ViewModifier {
+    @Environment(\.colorScheme) private var scheme
+
+    func body(content: Content) -> some View {
+        content
             .background(
                 RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .fill(Color(nsColor: .controlBackgroundColor))
+                    .fill(scheme == .dark ? Color.white.opacity(0.055) : Color.white)
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .stroke(Color.primary.opacity(0.08), lineWidth: 1)
+                    .stroke(Color.primary.opacity(scheme == .dark ? 0.14 : 0.09), lineWidth: 1)
             )
+            .shadow(color: Color.black.opacity(scheme == .dark ? 0 : 0.06), radius: 4, y: 1)
     }
+}
+
+private extension View {
+    func card() -> some View { modifier(CardStyle()) }
 }
