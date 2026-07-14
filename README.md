@@ -26,7 +26,26 @@ No Dock icon — it lives in the menu bar.
   Back/Forward, Copy/Paste.
 - Optional **launch at login**.
 
-## Build & run
+## Install (download — no building)
+
+1. Grab the latest `OptionsBGone.zip` from the
+   [Releases](https://github.com/adamghaida/OptionsBGone/releases) page and
+   unzip it.
+2. Move `OptionsBGone.app` to `/Applications` (optional but tidy).
+3. The app isn't notarized by Apple, so macOS will refuse the first launch. Clear
+   that with one command:
+   ```sh
+   xattr -dr com.apple.quarantine /Applications/OptionsBGone.app
+   open /Applications/OptionsBGone.app
+   ```
+   *(Or: double-click, let it get blocked, then System Settings → Privacy &
+   Security → scroll down → **Open Anyway**.)*
+4. Grant **Accessibility** when prompted (System Settings → Privacy & Security →
+   Accessibility) so it can read/remap mouse buttons.
+
+Then open **Settings…** from the menu-bar mouse icon and add your bindings.
+
+## Build from source
 
 ```sh
 ./build.sh
