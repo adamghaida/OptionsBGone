@@ -102,3 +102,9 @@ Ordinary app shortcuts like `⌘Space` work fine as keystrokes.
 - HID++ 2.0 control: divert the gesture button, set DPI, read battery, remap
   on-device.
 - A stable local signing identity so the Accessibility grant survives rebuilds.
+
+## License
+
+[MIT-CMU](LICENSE) — a permissive, MIT-style license (Carnegie Mellon variant).
+Free to use, copy, modify, and distribute; just keep the copyright notice and
+don't use the author's name in advertising without permission.
